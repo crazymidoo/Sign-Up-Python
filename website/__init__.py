@@ -1,7 +1,8 @@
 # Questo file py rende il folder 'website' un package
 # Creazione l'app Flask
 from flask import Flask
-from flask_sqlalchemy import flask_sqlalchemy
+import os
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -18,4 +19,14 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='')
 
+    from .models import User, Note
+
+    create_database(app)
+
     return app
+
+def create_database(app):
+    if not os.path.exists('website/' + DB_NAME):
+        with app.app_context():
+            db.create_all()
+        print('Database creato!')
