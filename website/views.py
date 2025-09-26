@@ -8,4 +8,4 @@ views = Blueprint('views', __name__)
 #Aggiungo un decoratore
 @login_required
 def home():
-    return render_template("home.html")
+    return render_template("home.html", user=current_user)
