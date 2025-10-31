@@ -1,4 +1,4 @@
-## Flask Notes Web Application
+## Flask Notes Web Application 
 
 This project is a full-stack web application that allows users to manage personal notes.
 It consists of a Flask + SQLite backend and a Bootstrap + JavaScript frontend.
